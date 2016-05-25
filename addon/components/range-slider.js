@@ -110,6 +110,16 @@ export default Ember.Component.extend({
     }
   }),
 
+  setRangeVal: observer('range', function() {
+    let slider = this.get('slider');
+
+    if (slider) {
+      var val = this.get('range');
+      slider.updateOptions({range: val});
+      this.setVal();
+    }
+  }),
+
   /**
    * Perform a naive check to see if the deprecated action name exists in our
    * attrs and then log a deprecation warning and trigger the old action.
